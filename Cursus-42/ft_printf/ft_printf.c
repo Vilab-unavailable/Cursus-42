@@ -10,35 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-
-size_t ft_count(const char *s)
+int	ft_printchar(char c)
 {
-	size_t	i;
-	size_t	c;
-	int		conved;
+	return (write(1, &c, 1));
+}
 
-	i = 0;
-	c = 0;
-	conved = 0;
-	while (s[i])
-	{
-		if (s[i] != '%')
-		{
-			c++;
-			i++;
-		}
-		else if (i > 0 && s[i - 1] != '%')
-			i++;
-		else if (i > 0 && s[i - 1] == '%')
+int	ft_printstr
+		
+int	ft_type(va_list args, const char c)
+{
+	int	len;
+
+	len = 0;
+	if (c == 'c')
+		
+	else if (c == 's')
+	else if (c == 'p')
+	else if (c == 'd')
+	else if (c == 'i')
+	else if (c == 'u')
+	else if (c == 'x')
+	else if (c == 'X')
+	else if (c == '%')
+		
 
 
-int	ft_printf(const char *s, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		args;
-	va_start	( args , n );
-	size_t		l;
-	size_t		i;
+	int		len;
+	int		i;
 
+	len = 0;
 	i = 0;
-	if (ft_strlen(const char *s) % 2;
-
+	if (!s)
+		return (-1);
+	va_start(args, str);
+	while (str[i] & len >= 0)
+	{
+		if (str[i] == '%')
+		{
+			len = ft_type(args, str[i + 1], len);
+			i++ ;
+		}
+		else
+			len += ft_printchar(str[i]);
+		i++ ;
+	}
+	va_end(args);
+	return (len);
+}
+		
+			
