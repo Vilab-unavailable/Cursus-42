@@ -9,7 +9,7 @@ ee/* ************************************************************************** 
 /*   Updated: 2024/12/21 15:39:48 by vilabard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <unistd.h>
 #include <stdarg.h>
 
 int	ft_printchar(char c)
@@ -52,8 +52,7 @@ void	ft_putnbr_fd(int n, int fd)
 		write(1, &c, 1);
 	}
 }
-
-int	ft_putptr(unsigned long long nb)
+int	ft_printhexa(unsigned long long nb)
 {
 	char	c;
 
@@ -63,7 +62,21 @@ int	ft_putptr(unsigned long long nb)
 		c = 'a' + (nb % 16);
 	nb = nb / 16;
 	if (nb != 0)
-		ft_putptr(nb);
+		ft_printhexa(nb);
+	ft_printchar(c);
+}
+
+int	ft_printullhexa(unsigned long long nb)
+{
+	char	c;
+
+	if (nb % 16 <= 9)
+		c = '0' + (nb % 16);
+	else
+		c = 'a' + (nb % 16);
+	nb = nb / 16;
+	if (nb != 0)
+		ft_printhexa(nb);
 	ft_printchar(c);
 }
 
@@ -90,26 +103,26 @@ int	ft_printptr(void *ptr)
     if (ptr == 0)
         return (ft_printstr("(nil)"));
 	ft_printstr("0x");
-	ft_putptr((unsigned long long) ptr);
+	ft_printullhexa((unsigned long long) ptr);
 	return (2 + ft_hexalen((unsigned long long) ptr));
 }	
-int	ft_type(va_list args, const char c)
+int	ft_type(va_list args, const char *str, int i, int len)
 {
-	int	len;
-
-	len = 0;
-	if (c == 'c')
-		len = ft_printchar(va_arg(args, int));
-	else if (c == 's')
-		len = ft_printstr(va_arg(args, char *));
-	else if (c == 'p')
-        len = ft_printptr(va_arg(args, void *));
+	if (!str[i])
+		len = -1;
+	else if (str[i] == 'c')
+		len += ft_printchar(va_arg(args, int));
+	else if (str[i] == 's')
+		len += ft_printstr(va_arg(args, char *));
+	else if (str[i] == 'p')
+        	len += ft_printptr(va_arg(args, void *));
 //	else if (c == 'd')
 //	else if (c == 'i')
 //	else if (c == 'u')
 //	else if (c == 'x')
 //	else if (c == 'X')
-//	else if (c == '%')
+	else if (str[i] == '%')
+		len += ft_printchar('%');
 	return (len);
 }
 
@@ -124,11 +137,11 @@ int	ft_printf(const char *str, ...)
 	if (!str)
 		return (-1);
 	va_start(args, str);
-	while (str[i])
+	while (str[i] && len >= 0)
 	{
 		if (str[i] == '%')
 		{
-			len += ft_type(args, str[i + 1]);
+			len = ft_type(args, str, i + 1, len);
 			i++ ;
 		}
 		else
