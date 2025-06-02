@@ -258,10 +258,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
-		
-
-
-
+/*
 int main()
 {
     int a;
@@ -271,7 +268,7 @@ int main()
     unsigned int u;
 
     c = "this a sentence with an adress";
-    i = 4294967295;
+    i = -2147483648;
     u = 4294967295;
     a = ft_printf("B%sp%x", "copie", u);
     b = printf("A%sp%x", "vraie", u);
@@ -280,6 +277,7 @@ int main()
     write(1, "\n",1);
     ft_putnbr_fd(b, 1);
     write(1, "\n",1);
-//    ft_putnbr_fd(-2147483648, 1);
+    ft_putnbr_fd(-2147483648, 1);
     return (0);
 }
+*/
