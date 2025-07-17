@@ -84,7 +84,7 @@ int	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst)
 	{
-		(del)(lsr->content);
+		del(lsr->content);
 		free(lst);
 	}
 }
@@ -103,12 +103,45 @@ void	ft_lsrclear(t_list **lst, void (*del)(void *))
 	{
 		i++;
 		todel = tmp;
-		if (tmp->next != NULL)
-			tmp = tmp->next;
+		tmp = tmp->next;
 		ft_lstdelone(todel, del);
 	}
 	*lst = NULL;
 }
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
+
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*tmp;
+	t_list	*res;
+
+	if (!lst)
+		return (NULL);
+	tmp = 0
+	res = 0;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (tmp)
+		{
+			ft_lstadd_back(&res, tmp);
+			lst = lst->next;
+		}
+		else
+			return (ft_lstclear(&res, del));
+	}
+	return (res);
+	
 }
 
 int	main(void)
