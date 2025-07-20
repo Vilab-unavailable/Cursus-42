@@ -23,8 +23,8 @@ typedef struct s_data
 */
 typedef struct s_dl_list;
 {
-	long	value
-	long	index
+	int	value
+	int	index
 	struct s_stack_a *next
 	struct s_stack_a *prev
 }	t_dl_list;
