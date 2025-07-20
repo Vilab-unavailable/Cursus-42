@@ -21,12 +21,21 @@ typedef struct s_data
 	size_t	size_stack_b;
 }	t_data;
 */
+typedef struct s_dl_list;
+{
+	long	value
+	long	index
+	struct s_stack_a *next
+	struct s_stack_a *prev
+}	t_dl_list;
+
 
 typedef struct s_stack_a
 {
 	long	value
 	long	index
 	struct s_stack_a *next
+	struct s_stack_a *prev
 }	t_stack_a;
 
 typedef struct s_stack_b
@@ -34,6 +43,7 @@ typedef struct s_stack_b
 	long	value
 	long	index
 	struct s_stack_b *next
+	struct s_stack_a *prev
 }	t_stack_b;
 
 #endif
