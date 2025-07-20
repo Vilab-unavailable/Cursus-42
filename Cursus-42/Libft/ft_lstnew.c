@@ -91,17 +91,14 @@ int	ft_lstdelone(t_list *lst, void (*del)(void *))
 
 void	ft_lsrclear(t_list **lst, void (*del)(void *))
 {
-	int		i;
 	t_list	*tmp;
 	t_list	*todel;
 
 	if (!lst)
 		return (NULL);
 	tmp = *lst;
-	i = 0;
 	while (tmp)
 	{
-		i++;
 		todel = tmp;
 		tmp = tmp->next;
 		ft_lstdelone(todel, del);
