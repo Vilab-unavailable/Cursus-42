@@ -63,16 +63,13 @@ int	ft_lstsize(t_list *lst)
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	int		i;
 	t_list	*tmp;
 
 	if (!lst)
 		return (NULL);
 	tmp = lst;
-	i = 0;
 	while (tmp)
 	{
-		i++;
 		if (tmp->next == NULL)
 			break;
 		tmp = tmp->next;
