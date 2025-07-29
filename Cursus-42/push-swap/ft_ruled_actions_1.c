@@ -1,9 +1,10 @@
-void	swap(t_dl_list **t_dl_list)
+/*
+	void	swap(t_dl_list **t_dl_list) //inside
 {
 	int	temp;
 	int	temp_i;
 
-	if (t_dl_list == NULL || *t_dl_list == NULL)
+	if (t_dl_list == NULL || *t_dl_list == NULL || (*t_dl_list)->next == NULL)
 		return;
 	temp = (*t_dl_list)->value;
 	temp_i = (*t_dl_list)->index;
@@ -11,6 +12,21 @@ void	swap(t_dl_list **t_dl_list)
 	(*t_dl_list)->index = (*t_dl_list)->next->index;
 	(*t_dl_list)->next->value = temp;
 	(*t_dl_list)->next->index = temp_i;
+}
+*/
+// swap first two elements
+void	swap(t_dl_list **list)
+{
+	t_dl_list	*temp;
+
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+	temp = *list;
+	temp->prev = temp->next;
+	temp->next = temp->prev->next;
+	temp->prev->prev = NULL;
+	temp->prev->next = temp;
+	*list = temp->prev;
 }
 
 // put the first element of the second list at the top of the first
@@ -23,7 +39,7 @@ void	push(t_dl_list **list_to, t_dl_list **list_from)
 	temp = *list_from;
 	*list_from = (*list_from)->next;
 	if (*list_from)
-		*list_from)->prev = NULL;
+		*(list_from)->prev = NULL;
 	if (*list_to == NULL)
 	{
 		*list_to = temp;
@@ -36,6 +52,7 @@ void	push(t_dl_list **list_to, t_dl_list **list_from)
 		*list_to = temp;
 	}
 }
+// put the first element at the back, the second at the top
 void	rotate(t_dl_list **list)
 {
 	t_dl_list *temp;
@@ -44,12 +61,12 @@ void	rotate(t_dl_list **list)
 		return;
 	temp = ft_lstlast(*list);
 	temp->next = *list;
-	*list = temp->next->next;
+	*list = (*list)->next;
 	(*list)->prev = NULL;
 	temp->next->prev = temp;
 	temp->next->next = NULL;
 }
-
+//put the last element at the top, the first as the second
 void	r_rotate(t_dl_list **list)
 {
 	t_dl_list *temp;
