@@ -14,6 +14,10 @@
 	(*t_dl_list)->next->index = temp_i;
 }
 */
+
+*char	do(*f(
+
+
 // swap first two elements
 void	swap(t_dl_list **list)
 {
