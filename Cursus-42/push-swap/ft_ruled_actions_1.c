@@ -1,86 +1,91 @@
-/*
-	void	swap(t_dl_list **t_dl_list) //inside
-{
-	int	temp;
-	int	temp_i;
-
-	if (t_dl_list == NULL || *t_dl_list == NULL || (*t_dl_list)->next == NULL)
-		return;
-	temp = (*t_dl_list)->value;
-	temp_i = (*t_dl_list)->index;
-	(*t_dl_list)->value = (*t_dl_list)->next->value;
-	(*t_dl_list)->index = (*t_dl_list)->next->index;
-	(*t_dl_list)->next->value = temp;
-	(*t_dl_list)->next->index = temp_i;
-}
-*/
-
-*char	do(*f(
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ruled_actions_1.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vilabard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/29 14:50:03 by vilabard          #+#    #+#             */
+/*   Updated: 2025/07/29 14:50:09 by vilabard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "push_swap.h"
 
 // swap first two elements
-void	swap(t_dl_list **list)
+void	swap(t_stack **stack, char *str)
 {
-	t_dl_list	*temp;
+	t_stack	*temp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-	temp = *list;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return ;
+	temp = *stack;
 	temp->prev = temp->next;
 	temp->next = temp->prev->next;
 	temp->prev->prev = NULL;
 	temp->prev->next = temp;
-	*list = temp->prev;
+	*stack = temp->prev;
+	if (str)
+		ft_putstr_fd(str, 1);
 }
 
-// put the first element of the second list at the top of the first
-void	push(t_dl_list **list_to, t_dl_list **list_from)
+// put the first element of the second stack at the top of the first
+void	push(t_stack **stack_to, t_stack **stack_from, char *str)
 {
-	t_dl_list	*temp;
+	t_stack	*temp;
+	t_stack	*temp2;
 
-	if (list_from == NULL || *list_from == NULL)
+	if (stack_from == NULL || *stack_from == NULL)
 		return ;
-	temp = *list_from;
-	*list_from = (*list_from)->next;
-	if (*list_from)
-		*(list_from)->prev = NULL;
-	if (*list_to == NULL)
+	temp = *stack_from;
+	temp2 = (*stack_from)->next;
+	//*stack_from = (*stack_from)->next;
+	if (temp2)
+		temp2->prev = NULL;
+	if (*stack_to == NULL)
 	{
-		*list_to = temp;
+		*stack_to = temp;
 		temp->next = NULL;
 	}
 	else
 	{
-		temp->next = *list_to;
+		temp->next = *stack_to;
 		temp->next->prev = temp;
-		*list_to = temp;
+		*stack_to = temp;
 	}
+	if (str)
+		ft_putstr_fd(str, 1);
 }
-// put the first element at the back, the second at the top
-void	rotate(t_dl_list **list)
-{
-	t_dl_list *temp;
 
-	if (list == NULL || *list == NULL || (*list->next == NULL))
-		return;
-	temp = ft_lstlast(*list);
-	temp->next = *list;
-	*list = (*list)->next;
-	(*list)->prev = NULL;
+// put the first element at the back, the second at the top
+void	rotate(t_stack **stack, char *str)
+{
+	t_stack	*temp;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return ;
+	temp = ft_stack_last(*stack);
+	temp->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
 	temp->next->prev = temp;
 	temp->next->next = NULL;
+	if (str)
+		ft_putstr_fd(str, 1);
 }
-//put the last element at the top, the first as the second
-void	r_rotate(t_dl_list **list)
-{
-	t_dl_list *temp;
 
-	if (list == NULL || *list == NULL || (*list->next == NULL))
-		return;
-	temp = ft_lstlast(*list);
+//put the last element at the top, the first as the second
+void	r_rotate(t_stack **stack, char *str)
+{
+	t_stack	*temp;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return ;
+	temp = ft_stack_last(*stack);
 	temp->prev->next = NULL;
 	temp->prev = NULL;
-	temp->next = *list;
+	temp->next = *stack;
 	temp->next->prev = temp;
-	*list = temp;
+	*stack = temp;
+	if (str)
+		ft_putstr_fd(str, 1);
 }
