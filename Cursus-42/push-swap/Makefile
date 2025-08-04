@@ -11,7 +11,7 @@
 # **************************************************************************** #
 HEADER = ft_push_swap.h
 
-SRC = ft_ruled_actions_1.c  ft_stack_1.c ft_stack_2.c  main.c \
+SRC = ft_ruled_actions_1.c  ft_stack_1.c ft_stack_2.c  main.c ft_sort_big.c ft_sort_small.c \
 
 OBJ = $(SRC:.c=.o)
 

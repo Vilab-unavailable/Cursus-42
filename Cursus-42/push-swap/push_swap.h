@@ -52,7 +52,23 @@ void	ft_stack_delone(t_stack *stack);
 void	ft_stack_clear(t_stack **stack);
 
 // stack_2
-int	ft_stack_sorted(t_stack *stack);
+int		ft_stack_sorted(t_stack **stack);
+int		ft_stack_rsorted(t_stack **stack);
+
+// sort_big
+int		ft_rotations(t_stack **stack_a, int len, int wanted);
+int		ft_rotate_to_push(t_stack **stack_a, t_stack **stack_b, int wanted, int reverse);
+void	ft_sort_big(t_stack **stack_a, size_t len);
+
+// sort_small
+void	ft_sort_3a(t_stack **stack);
+void	ft_rsort_3b(t_stack **stack);
+void	ft_sort_stack_b(t_stack **stack_b, size_t len_b);
+void	ft_sort_small(t_stack **stack_a, int len);
+
+// main 
+void	ft_sort_stack(t_stack **stack_a, size_t len);
+void	ft_stack_print(t_stack **stack, char *str);
 
 // utilitarian
 // sort

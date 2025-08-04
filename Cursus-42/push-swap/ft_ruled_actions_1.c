@@ -38,9 +38,9 @@ void	push(t_stack **stack_to, t_stack **stack_from, char *str)
 		return ;
 	temp = *stack_from;
 	temp2 = (*stack_from)->next;
-	//*stack_from = (*stack_from)->next;
 	if (temp2)
 		temp2->prev = NULL;
+	*stack_from = temp2;
 	if (*stack_to == NULL)
 	{
 		*stack_to = temp;

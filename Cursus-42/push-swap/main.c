@@ -62,7 +62,7 @@ int	ft_input_is_numeric(char **tstr)
 	i = 0;
 	while (tstr[j])
 	{
-		while (tstr[j][i])
+		while (tstr[j] && tstr[j][i])
 		{
 			if (!((tstr[j][i] >= '0' && tstr[j][i] <= '9') && !(tstr[j][i] == '-' && i == 0)))
 				return (0);
@@ -198,23 +198,13 @@ t_stack	*ft_init_stack(long long *list, int len)
 		ft_stack_addback(&stack_a, ft_stack_new((int) list[i], list_pos[i]));
 		i++ ;
 	}
-	/*while (av[i])
-	{
-		nb = ft_llong_atoi(av[i]);
-		if (nb > 2147483647 || nb < -2147483648)
-			return (ft_freetable(av), ft_stack_clear(&stack_a), ft_putstr_fd("Error\n", 1), NULL);
-		if (i == 0)
-			stack_a->value = nb;
-		else
-			ft_stack_addback(&stack_a, ft_stack_new((int) nb));
-		i++;
-	}*/
 	free(list);
 	free(list_pos);
 	return (stack_a);
 }
 //////////////////////////////////////////////////  test
-#include <stdio.h>
+//#include <stdio.h>
+/*
 void	ft_stack_print(t_stack **stack, char *str)
 {
 	t_stack	*temp;
@@ -229,41 +219,19 @@ void	ft_stack_print(t_stack **stack, char *str)
 	}
 	printf("%s%s", str, "\n\n\n\n");
 }
-
-// sort the 5 unsorted cases
-void	ft_sort_3(t_stack **stack)
-{
-	if ((*stack)->wanted_pos == 1)
-	{
-		r_rotate(stack, "rra\n");
-		swap(stack, "sa\n");
-		return ;
-	}
-	if ((*stack)->wanted_pos == 2)
-	{
-		if ((*stack)->next->wanted_pos == 3)
-			r_rotate(stack, "rra\n");
-		else
-			swap(stack, "sa\n");
-		return ;
-	}
-	if ((*stack)->wanted_pos == 3)
-	{
-		rotate(stack, "ra\n");
-		if (!ft_stack_sorted(*stack))
-			swap(stack, "sa\n");
-	}
-}
-
-
+*/
 void	ft_sort_stack(t_stack **stack_a, size_t len)
 {
-	if (len == 3)
-		return (ft_sort_3(stack_a));
+	if (len == 2 && !(ft_stack_sorted(stack_a)))
+		swap(stack_a, "sa\n");
+	if (len == 3 && !(ft_stack_sorted(stack_a)))
+		return (ft_sort_3a(stack_a));
+	else if (len <= 6 && !(ft_stack_sorted(stack_a)))
+		return (ft_sort_small(stack_a, len));
+	else
+		ft_sort_big(stack_a, len);
 	//ft_stack_print(&stack_a, "stack_a");////////////test
 }
-
-
 
 int	ft_core(long long *list, size_t len)
 {
@@ -271,14 +239,11 @@ int	ft_core(long long *list, size_t len)
 //	char		*res;
 
 	stack_a = ft_init_stack(list, len);
-	ft_stack_print(&stack_a, "stack_a");////////////test
-	if (ft_stack_sorted(stack_a))
+	//ft_stack_print(&stack_a, "stack_a");////////////test
+	if (ft_stack_sorted(&stack_a))
 		return (ft_stack_clear(&stack_a), len * 0);
-	if (len == 2)
-		swap(&stack_a, "sa\n");
-	else 
-		ft_sort_stack(&stack_a, len);
-	ft_stack_print(&stack_a, "stack_a");////////////test
+	ft_sort_stack(&stack_a, len);
+	//ft_stack_print(&stack_a, "stack_a");////////////test
 	ft_stack_clear(&stack_a);
 	return (0);
 }
