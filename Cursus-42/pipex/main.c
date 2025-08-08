@@ -91,7 +91,7 @@ void	ft_child(char **av, char **envp, int *pipefd)
 
 	infile = open(av[1], O_RDONLY, 0777);
 	if (infile == -1)
-		exit(-1);
+		perror();
 	dup2(pipefd[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
 	close(pipefd[0]);
