@@ -5,13 +5,15 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
+# include "minilibx/mlx.h"
 # include "libft/libft.h"
 
 # define W_WIDTH 			800
 # define W_HEIGHT			600
 
-# define ESC 53
+# define ESC          53
 
-# define SCROLL_UP 4
-# define SCROLL_DOWN 5
+# define SCROLL_UP    4
+# define SCROLL_DOWN  5
+
+#endifdef
