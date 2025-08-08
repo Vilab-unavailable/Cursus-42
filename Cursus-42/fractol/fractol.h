@@ -16,4 +16,11 @@
 # define SCROLL_UP    4
 # define SCROLL_DOWN  5
 
+typedef struct s_fdata
+{
+  int  f_type;
+  
+
+
+
 #endifdef
