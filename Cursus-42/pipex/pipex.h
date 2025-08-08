@@ -18,25 +18,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <sys/wait.h>
-//# include <fcntl.h>
+# include <fcntl.h>
 # include "libft/libft.h"
-
-#endifdef
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

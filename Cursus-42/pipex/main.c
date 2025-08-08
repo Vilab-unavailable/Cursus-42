@@ -13,6 +13,30 @@
 #include "pipex.h"
 
 
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len2;
+
+	i = 0;
+	len2 = ft_strlen(little);
+	if (len2 == 0)
+		return ((char *)big);
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] && little[j] && (big[i + j] == little[j])
+			&& j + i < len)
+		{
+			j++ ;
+			if (j == len2)
+				return ((char *)&big[i]);
+		}
+		i++ ;
+	}
+	return (NULL);
+}
 
 void	ft_freetable(char **tab)
 {
@@ -31,15 +55,16 @@ void	ft_freetable(char **tab)
 }
 
 // extract from envp and return a table of possible paths
-char	*ft_get_paths(char **envp)
+char	**ft_get_paths(char **envp)
 {
 	int		i;
 	char	**t_path;
 
 	t_path = NULL;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0);
+	i = 0;
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++ ;
-	t_path = ft_split(envp[i + 5], ':');
+	t_path = (char**)ft_split(envp[i], ':');
 	return (t_path);	
 }
 
@@ -50,12 +75,16 @@ char	*ft_which_path(char *cmd, char **envp)
 	char	*path;
 	char	*full_path;
 	int		i;
+	int		j;
 
-	t_path = ft_split(ft_get_paths(envp), ';');
+	t_path = ft_get_paths(envp);
 	i = 0;
 	while (t_path[i])
 	{
-		path = ft_strjoin(t_path[i], "/");
+		j = 0;
+		while (t_path[i][j] && t_path[i][j] != '/')
+			j++ ;
+		path = ft_strjoin(t_path[i] + j, "/");
 		full_path = ft_strjoin(path, cmd);
 		free(path);
 		if (access(full_path, F_OK | X_OK) == 0)
@@ -67,17 +96,20 @@ char	*ft_which_path(char *cmd, char **envp)
 	return (0);	
 }
 
+// commands are put into a char** to fit execve
 void	ft_execute(char *str_cmd, char **envp)
 {
 	char	**t_cmd;
 	char	*path;
 
 	t_cmd = ft_split(str_cmd, ' ');
-	path = ft_which_path(t_cmd[0], envp);
+	//path = ft_which_path(t_cmd[0], envp);
+	path = ft_which_path(str_cmd, envp);
 	if (execve(path, t_cmd, envp) == -1)
 	{
 		ft_freetable(t_cmd);
-		perror("command not found\n, 2");  // free path ?
+		perror("zsh: command not found: ");  // free path ?
+		ft_putendl_fd(str_cmd, 2);
 	}
 	// free path ?
 	// free t_cmd ?
@@ -91,7 +123,10 @@ void	ft_child(char **av, char **envp, int *pipefd)
 
 	infile = open(av[1], O_RDONLY, 0777);
 	if (infile == -1)
-		perror();
+	{
+		perror("zsh: no such file or directory: ");
+		ft_putendl_fd(av[1], 2);
+	}
 	dup2(pipefd[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
 	close(pipefd[0]);
@@ -123,8 +158,7 @@ int	main(int ac, char **av, char **envp)
 	pid_t	pid;
 
 	if (ac != 5)
-		return (-1, ft_putstr_fd("accept arguments :
-			./pipex <infile> <cmd1> <cmd2> <outfile>\n", 2));
+		ft_putstr_fd("input : ./pipex <infile> <cmd1> <cmd2> <outfile>\n", 2);
 	else
 	{
 		if (pipe(pipefd) == -1)
@@ -134,7 +168,7 @@ int	main(int ac, char **av, char **envp)
 			exit(-1);
 		if (pid == 0)
 			ft_child(av, envp, pipefd);
-		waitpid(pid, NULL, 0);
+		//waitpid(pid, NULL, 0);
 		ft_parent(av, envp, pipefd);
 	}
 	return (0);

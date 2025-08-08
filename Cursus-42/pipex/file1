@@ -1,0 +1,5 @@
+i am tired
+but my love for pipes keeps me going !
+PATH=/home/vilabard/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+./pipex file1 "ls -l" "wc -l" file2
+r file1 "ls -l" "wc -l" file2
