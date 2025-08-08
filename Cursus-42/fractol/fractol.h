@@ -12,6 +12,11 @@
 # define W_HEIGHT			600
 
 # define ESC          53
+# define LEFT         123
+# define RIGHT        124
+# define DOWN         125
+# define UP           126
+
 
 # define SCROLL_UP    4
 # define SCROLL_DOWN  5
