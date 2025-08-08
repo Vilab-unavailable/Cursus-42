@@ -23,9 +23,27 @@
 
 typedef struct s_fdata
 {
-  int  f_type;
+  int     f_type;
+  int     x;
+  int     y;
+  double  x_i;
+  double  y_i;
+  double  x_delta;
+  double  y_delta;
+  double  sx;
+  double  sy;
+  double  zoom;
+  int     max_iter;
   
 
+  
 
+ fdata.x = 0;
+  fdata.y = 0;
+  fdata.x_delta = 0;
+  fdata.y_delta = 0;
+  fdata.zoom = 0;
+  fdata.max_iter = 50;
+  fdata.color = 0xFCBE11;
 
 #endifdef
