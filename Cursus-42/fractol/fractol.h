@@ -23,7 +23,9 @@
 
 typedef struct s_fdata
 {
-  int     f_type;
+  void    *mlx;
+  void    *mlx_win;
+  char    f_type;
   int     x;
   int     y;
   double  x_i;
