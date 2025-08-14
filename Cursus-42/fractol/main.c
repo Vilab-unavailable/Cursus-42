@@ -8,16 +8,16 @@ int draw_fractal(t_fractal *fractal)
  {
   while (fractal->y < HEIGHT)
   {
-   if (fdata->type == 1)
+   if (fdata->f_type == 'j')
     calculate_julia(fdata, cx, cy);
-   else if (fdata->type == 2)
+   else if (fdata->f_type == 'm')
     calculate_mandelbrot(fdata);
    fractal->y++;
   }
   fractal->x++;
   fractal->y = 0;
  }
- mlx_put_image_to_window(fdata->mlx, fdata->window, fdata->image, 0,
+ mlx_put_image_to_window(fdata->mlx, fdata->mlx_win, fdata->image, 0,
   0);
  return (0);
 }
@@ -56,6 +56,9 @@ t_data  *ft_init_fdata(char **av)
   fdata = malloc(sizeof(fdata));
   if (!fdata)
     exit(-1);
+  if (!(av[1] && av[1][0] && !av[1][1] && (av[1][0] == 'j' || av [1][0] == 'm')))
+       exit(free(fdata), 1);
+  fdata.f_type = av[1][0];
   fdata.x = 0;
   fdata.y = 0;
   fdata.x_delta = 0;
@@ -73,13 +76,13 @@ int  main(int ac, char ** av)
 
   if  (ac != 2)
   {
-    ft_putstr_fd("input <1> for julia or <2> for mandelbrot>\n", 1);
+    ft_putstr_fd("input <j> for julia or <m> for mandelbrot>\n", 1);
     return (0);
   }
   fdata = ft_init_fdata(av);
-  mlx_key_hook(fdata->window, key_hook, fdata);
-  mlx_mouse_hook(fdata->window, mouse_hook, fdata);
-  mlx_hook(fdata->window, 17, 0L, exit_fractal, fdata);   // mask 0L ou (1L << 0) ?
+  mlx_key_hook(fdata->mlx_win, key_hook, fdata);
+  mlx_mouse_hook(fdata->mlx_win, mouse_hook, fdata);
+  mlx_hook(fdata->mlx_win, 17, 0L, exit_prog, fdata);   // mask 0L ou (1L << 0) ?
   draw_fractal(fdata, fdata->type);
   mlx_loop(fractal->mlx);  
   free(fdata);
