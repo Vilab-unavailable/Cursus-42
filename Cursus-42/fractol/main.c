@@ -32,7 +32,7 @@ void calc_mandelbrot(tf *f)
  i = 0;
  while ( i < f->max_iter || (f->zx * f->zx) + (f->zy * f->zy) >= DOUBLE_MAX)
  {
-  temp_zx = (f->zx * f->zx) - (f->zy * f->zy) + f->cx;
+  temp_zx = f->zx;
   f->zx = (f->zx * f->zx) - (f->zy * f->zy) + f->cx;
   f->zy = 2 * f->zy * temp_zx + f->cy;
   i++ ;
@@ -113,8 +113,8 @@ t_f  *ft_init_fdata(char **av)
   f.custom_c = 0;
   f.cx = 0.285;
   f.cy = 0.01;
-  f.x_delta = 0;
-  f.y_delta = 0;
+  f.offset_x = 0;
+  f.offset_y = 0;
   f.zoom = 0;
   f.max_iter = 50;
   f.color = 0xFCBE11;
