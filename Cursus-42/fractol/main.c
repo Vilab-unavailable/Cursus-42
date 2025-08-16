@@ -1,12 +1,13 @@
 #include "fractol.h"
 
-int draw_fractal(t_fractal *fractal)
+
+int draw_fractal(t_fdata *fdata)
 {
- fractal->x = 0;
- fractal->y = 0;
- while (fractal->x < WIDTH)
+ fdata->x = 0;
+ while (fdata->x < WIDTH)
  {
-  while (fractal->y < HEIGHT)
+  fdata->y = 0;
+  while (fdata->y < HEIGHT)
   {
    if (fdata->f_type == 'j')
     calculate_julia(fdata, cx, cy);
@@ -15,7 +16,6 @@ int draw_fractal(t_fractal *fractal)
    fractal->y++;
   }
   fractal->x++;
-  fractal->y = 0;
  }
  mlx_put_image_to_window(fdata->mlx, fdata->mlx_win, fdata->image, 0,
   0);
