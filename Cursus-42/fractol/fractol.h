@@ -16,6 +16,10 @@
 # define RIGHT        124
 # define DOWN         125
 # define UP           126
+# define UP           126
+# define UP           126
+# define UP           126
+# define UP           126
 
 
 # define SCROLL_UP    4
