@@ -102,13 +102,13 @@ int  key_input(int keycode, t_f *f)
     f->offset_y -= 20 / f->zoom;
   else if(keycode = LEFT)
     f->offset_y += 20 / f->zoom;
-  else if(keycode = W && f->cy < DOUBLE_MAX - 0.02)
+  else if(keycode = W && f->cy < DBL_MAX - 0.01)
     f->cy += 0.01
-  else if(keycode = S && f->cy > DOUBLE_MIN + 0.02)
+  else if(keycode = S && f->cy > DBL_MIN + 0.01)
     f->cy -= 0.01
-  else if(keycode = D && f->cx < DOUBLE_MAX - 0.02)
+  else if(keycode = D && f->cx < DBL_MAX - 0.01)
     f->cx += 0.01
-  else if(keycode = A && f->cx > DOUBLE_MIN + 0.02)
+  else if(keycode = A && f->cx > DBL_MIN + 0.01)
     f->cx -= 0.01
   draw_fractal(f, f->type);
 }
