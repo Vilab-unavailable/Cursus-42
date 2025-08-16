@@ -36,8 +36,8 @@ typedef struct s_f
   int     custom_c;
   double  cx;
   double  cy;
-  double  x_delta;
-  double  y_delta;
+  double  offset_x;
+  double  offset_y;
   double  zx;
   double  zy;
   double  zoom;
