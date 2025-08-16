@@ -1,4 +1,20 @@
 #include "fractol.h"
+
+int	exit_clean(t_f *f)
+{
+ if (!f)
+  exit(1);
+ if (f->mlx_img)
+	 mlx_destroy_image(f->mlx, f->mlx_img);
+ if (f->mlx_win)
+	 mlx_destroy_window(f->mlx, f->mlx_win);
+ if (f->mlx)
+	 free(f->mlx);
+	free(f);
+	exit(1);
+	return (0);
+}
+
 void calc_julia(t_f *f)
 {
  int    i;
@@ -74,28 +90,36 @@ int draw_fractal(t_f *f)
 
 
 
-int  key_hook(int keycode, t_fdata *fdata)
+int  key_input(int keycode, t_f *f)
 {
   if (keycode == ESC)
     exit(1);
   else if(keycode = LEFT)
-    f->offset_x -= 20 / fdata->zoom;
+    f->offset_x -= 20 / f->zoom;
   else if(keycode = RIGHT)
-    f->offset_x += 20 / fdata->zoom;
+    f->offset_x += 20 / f->zoom;
   else if(keycode = LEFT)
-    f->offset_y -= 20 / fdata->zoom;
+    f->offset_y -= 20 / f->zoom;
   else if(keycode = LEFT)
-    f->offset_y += 20 / fdata->zoom;
-  draw_fractal(fdata, fdata->type);
+    f->offset_y += 20 / f->zoom;
+  else if(keycode = W && f->cy < DOUBLE_MAX - 0.02)
+    f->cy += 0.01
+  else if(keycode = S && f->cy > DOUBLE_MIN + 0.02)
+    f->cy -= 0.01
+  else if(keycode = D && f->cx < DOUBLE_MAX - 0.02)
+    f->cx += 0.01
+  else if(keycode = A && f->cx > DOUBLE_MIN + 0.02)
+    f->cx -= 0.01
+  draw_fractal(f, f->type);
 }
 
-int	mouse_hook(int mouse_code, t_fdata *fdata)
+int	mouse_input(int mouse_code, t_f *f)
 {
   if (mouse_code = SCROLL_UP)
-    zoom_in(fdata);
+    zoom_in(f);
   else if (mouse_code = SCROLL_UP)
-    zoom_in(fdata);
-  draw_fractal(fdata, fdata->type);
+    zoom_in(f);
+  draw_fractal(f, f->type);
 }
 
 t_f  *ft_init_fdata(char **av)
@@ -117,7 +141,7 @@ t_f  *ft_init_fdata(char **av)
   f.offset_y = 0;
   f.zoom = 0;
   f.max_iter = 50;
-  f.color = 0xFCBE11;
+  f.color = 0x004a10; //FCBE11
   
   
 }
@@ -132,10 +156,10 @@ int  main(int ac, char ** av)
     return (0);
   }
   fdata = ft_init_fdata(av);
-  mlx_key_hook(fdata->mlx_win, key_hook, fdata);
-  mlx_mouse_hook(fdata->mlx_win, mouse_hook, fdata);
-  mlx_hook(fdata->mlx_win, 17, 0L, exit_prog, fdata);   // mask 0L ou (1L << 0) ?
-  draw_fractal(fdata, fdata->type);
-  mlx_loop(fractal->mlx);  
-  free(fdata);
+  mlx_key_hook(f->mlx_win, key_input, f);
+  mlx_mouse_hook(f->mlx_win, mouse_input, f);
+  mlx_hook(f->mlx_win, 17, 0L, exit_prog, f);   // mask 0L ou (1L << 0) ?
+  draw_fractal(f, f->type);
+  mlx_loop(f->mlx);  
+  exit_clean(f);
 }
