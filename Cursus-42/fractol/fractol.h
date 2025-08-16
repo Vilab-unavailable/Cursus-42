@@ -29,19 +29,20 @@ typedef struct s_fdata
 {
   void    *mlx;
   void    *mlx_win;
+  void    *mlx_img;
   char    f_type;
   int     x;
   int     y;
-  double  x_i;
-  double  y_i;
+  double  cx;
+  double  cy;
   double  x_delta;
   double  y_delta;
-  double  sx;
-  double  sy;
+  double  zx;
+  double  zy;
   double  zoom;
   int     max_iter;
   
-
+}  t_fdata  fdata
   
 
  fdata.x = 0;
