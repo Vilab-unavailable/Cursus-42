@@ -25,7 +25,7 @@
 # define SCROLL_UP    4
 # define SCROLL_DOWN  5
 
-typedef struct s_fdata
+typedef struct s_f
 {
   void    *mlx;
   void    *mlx_win;
@@ -33,6 +33,7 @@ typedef struct s_fdata
   char    f_type;
   int     x;
   int     y;
+  int     custom_c;
   double  cx;
   double  cy;
   double  x_delta;
@@ -42,7 +43,7 @@ typedef struct s_fdata
   double  zoom;
   int     max_iter;
   
-}  t_fdata  fdata
+}  t_f;
   
 
  fdata.x = 0;
