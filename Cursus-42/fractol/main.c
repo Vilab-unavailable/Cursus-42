@@ -1,5 +1,5 @@
 #include "fractol.h"
-
+void calc_julia
 
 int draw_fractal(t_fdata *fdata)
 {
@@ -10,9 +10,16 @@ int draw_fractal(t_fdata *fdata)
   while (fdata->y < HEIGHT)
   {
    if (fdata->f_type == 'j')
-    calculate_julia(fdata, cx, cy);
+   {
+    if (f_data->custom_c == 0)
+    {
+     f_data->cx = 0.285;
+     f_data->cy = 0.01;
+    }
+    calc_julia(fdata, cx, cy);
+   }
    else if (fdata->f_type == 'm')
-    calculate_mandelbrot(fdata);
+    calc_mandelbrot(fdata);
    fractal->y++;
   }
   fractal->x++;
@@ -61,6 +68,9 @@ t_data  *ft_init_fdata(char **av)
   fdata.f_type = av[1][0];
   fdata.x = 0;
   fdata.y = 0;
+  f_data.custom_c = 0;
+  f_data.cx = 0.285;
+  f_data.cy = 0.01;
   fdata.x_delta = 0;
   fdata.y_delta = 0;
   fdata.zoom = 0;
