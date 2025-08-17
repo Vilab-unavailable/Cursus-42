@@ -11,13 +11,15 @@
 # **************************************************************************** #
 HEADER = fractol.h
 
-SRC =	main.c		\
+SRC =	main.c	ft_calc.c	ft_exit.c	ft_param.c \
+		ft_convert_base.c	ft_inits.c	ft_utils.c \
+		ft_atox.c	ft_key_mouse.c \
 
 OBJ = $(SRC:.c=.o)
 
 NAME = fractol
 
-CC = cc -g -O3
+CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
