@@ -16,15 +16,15 @@ void	ft_input_msg(int n)
 {
 	if (n == 1)
 	{
-		ft_putstr_fd("in: <f_type : m, b> + opt(<max_iter> <0xcolor>)\n", 1);
-		ft_putstr_fd(" or <f_type : j> + opt(<double cx> <double cy>)\n", 1);
+		ft_putstr_fd("in: <f_type : m, b> + opt(<max_iter> <0xcolor>)\n", 2);
+		ft_putstr_fd(" or <f_type : j> + opt(<double cx> <double cy>)\n", 2);
 		ft_putstr_fd(" or <f_type : j> + <double cx> <double cy> +"
-			" opt(<max_iter> <0xcolor>)\n", 1);
+			" opt(<max_iter> <0xcolor>)\n", 2);
 		ft_putstr_fd("\ncustom Julia parameters MUST be set "
-			"before rendering options\n", 1);
-		ft_putstr_fd("cx and cy must be between -2.0 an 2.0\n", 1);
+			"before rendering options\n", 2);
+		ft_putstr_fd("cx and cy must be between -2.0 an 2.0\n", 2);
 		ft_putstr_fd("custom max_iter (1->1000) and color "
-			"(0x000001->0xFFFFFF) can only be set both at once\n", 1);
+			"(0x000001->0xFFFFFF) can only be set both at once\n", 2);
 	}
 }
 

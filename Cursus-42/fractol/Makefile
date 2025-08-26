@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = fractol
 
-CC = cc
+CC = cc -g
 
 FLAGS = -Wall -Wextra -Werror
 
