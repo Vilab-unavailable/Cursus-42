@@ -10,10 +10,9 @@
 
 typedef struct s_cmd			//data for executing a single cmd
 {
-	char			**cmd_tab;	//tab de cmd + params only
-	char			**args;		
-	int				fd_in;
-	int				fd_out;
+	char			**cmd_tab;
+	int				fd_in;		//pipe in
+	int				fd_out;		//pipe out
 	struct	s_cmd	*prev;
 	struct	s_cmd	*next;
 }					t_cmd;
@@ -32,6 +31,7 @@ typedef struct s_data
 
 
 }				t_data
+
 
 
 
