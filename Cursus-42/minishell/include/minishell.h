@@ -8,11 +8,38 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 
+/* handle multiple in redirections and here_doc 
+ex : <txt1 <txt2 cat <<stop <txt3
+txt1 2 must be open(readonly) without error
+std_in must be read until the line stop is found
+txt3 must be open(readonly) without error and set as in
+*/
+typedef struct s_fd_in			
+{
+	int				fd_in;
+	int				type_in;
+	struct	s_cmd	*prev;
+	struct	s_cmd	*next;
+}					t_fd_in;
+
+/* handle multiple out redirections 
+ex :>txt1 echo thing >>txt2
+txt1 must be open(trunc | creat) without error
+txt2 must be open(appnd | creat) without error and set as out
+*/
+typedef struct s_fd_out			
+{
+	int				fd_out;
+	int				type_out;
+	struct	s_cmd	*prev;
+	struct	s_cmd	*next;
+}					t_fd_out;
+
 typedef struct s_cmd			//data for executing a single cmd
 {
 	char			**cmd_tab;
-	int				fd_in;		//pipe in
-	int				fd_out;		//pipe out
+	t_fd_in			fd_in;
+	t_fd_out		fd_out;
 	struct	s_cmd	*prev;
 	struct	s_cmd	*next;
 }					t_cmd;
@@ -22,7 +49,7 @@ typedef struct s_data
 {
 	t_cmd		*cmd;
 
-	char		**envp;       // ou t_list
+	char		**envp;       // or list
 	int			pipefd[2];
 	int			n_pipe;			// number of pipes
 	int			env_shown;       // bool : cmd must only work once
@@ -31,7 +58,6 @@ typedef struct s_data
 
 
 }				t_data
-
 
 
 
