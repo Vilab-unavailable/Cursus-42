@@ -24,3 +24,19 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
+
+// return the number of line in the table, ie the len of the list of int
+size_t	ft_len_tchar(char **tchar)
+{
+	int		i;
+	size_t	len;
+
+	i = 0;
+	len = 0;
+	while (tchar[i])
+	{
+		i++;
+		len++;
+	}
+	return (len);
+}

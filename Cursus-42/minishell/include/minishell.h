@@ -35,6 +35,13 @@ typedef struct s_fd_out
 	struct	s_cmd	*next;
 }					t_fd_out;
 
+typedef struct s_list_str		// to store envp
+{
+	char			*str;
+	struct	s_cmd	*prev;
+	struct	s_cmd	*next;
+}					t_list;
+
 typedef struct s_cmd			//data for executing a single cmd
 {
 	char			**cmd_tab;
@@ -44,14 +51,23 @@ typedef struct s_cmd			//data for executing a single cmd
 	struct	s_cmd	*next;
 }					t_cmd;
 
+typedef struct s_pipe		// to store envp
+{
+	int				*fd[2];
+	struct	s_cmd	*prev;
+	struct	s_cmd	*next;
+}					t_pipe;
+
 
 typedef struct s_data
 {
+	t_list_str	*envp;
+
 	t_cmd		*cmd;
 
-	char		**envp;       // or list
-	int			pipefd[2];
-	int			n_pipe;			// number of pipes
+	t_pipe	pipefd;
+
+	int			n_pipe;
 	int			env_shown;       // bool : cmd must only work once
 	int			exit_status;
 

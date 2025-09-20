@@ -15,3 +15,4 @@ void	ft_freetable(char **tab)
 		free(tab);
 	}
 }
+

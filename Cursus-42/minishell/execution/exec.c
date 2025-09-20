@@ -78,6 +78,7 @@ void	ft_exec_cmd(t_data *data, char *str_cmd, char **envp)
 		exit(1);
 	}
 }
+/*
 void	child_process(char *argv, char **envp)
 {
 	pid_t	pid;
@@ -101,6 +102,7 @@ void	child_process(char *argv, char **envp)
 		waitpid(pid, NULL, 0);
 	}
 }
+*/
 
 void	child(t_data data)
 {
