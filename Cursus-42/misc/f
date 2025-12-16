@@ -1,0 +1,293 @@
+==826053== Memcheck, a memory error detector
+==826053== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==826053== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==826053== Command: ./a.out 9
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x10942E: makegrid (backtrackex.c:70)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053==  Address 0x4a9d0d8 is 8 bytes inside a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094A2: issafe (backtrackex.c:88)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x109558: issafe (backtrackex.c:109)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d1cc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094A2: issafe (backtrackex.c:88)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d12c is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x109558: issafe (backtrackex.c:109)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d17c is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1095DD: issafe (backtrackex.c:124)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096B6: solvenq (backtrackex.c:148)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d128 is 8 bytes inside a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094A2: issafe (backtrackex.c:88)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d17c is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x109558: issafe (backtrackex.c:109)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d21c is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1095DD: issafe (backtrackex.c:124)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x1095E2: issafe (backtrackex.c:124)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x1094F1: issafe (backtrackex.c:95)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094EC: issafe (backtrackex.c:95)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x10955D: issafe (backtrackex.c:109)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096B6: solvenq (backtrackex.c:148)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d180 is 7 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096B6: solvenq (backtrackex.c:148)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d21c is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096FD: solvenq (backtrackex.c:150)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d280 is 23 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096FD: solvenq (backtrackex.c:150)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d180 is 7 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x10932B: print (backtrackex.c:40)
+==826053==    by 0x109659: solvenq (backtrackex.c:139)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x109330: print (backtrackex.c:40)
+==826053==    by 0x109659: solvenq (backtrackex.c:139)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096FD: solvenq (backtrackex.c:150)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d128 is 8 bytes inside a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094EC: issafe (backtrackex.c:95)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096B6: solvenq (backtrackex.c:148)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0d8 is 8 bytes inside a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x1095E2: issafe (backtrackex.c:124)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x1094F1: issafe (backtrackex.c:95)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Conditional jump or move depends on uninitialised value(s)
+==826053==    at 0x10955D: issafe (backtrackex.c:109)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x1096D9: solvenq (backtrackex.c:149)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053== 
+==826053== Invalid write of size 4
+==826053==    at 0x1096FD: solvenq (backtrackex.c:150)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0d8 is 8 bytes inside a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1094EC: issafe (backtrackex.c:95)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== Invalid read of size 4
+==826053==    at 0x1095DD: issafe (backtrackex.c:124)
+==826053==    by 0x10968E: solvenq (backtrackex.c:146)
+==826053==    by 0x109826: main (backtrackex.c:188)
+==826053==  Address 0x4a9d0dc is 3 bytes after a block of size 9 alloc'd
+==826053==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==826053==    by 0x1093DB: makegrid (backtrackex.c:64)
+==826053==    by 0x1097F9: main (backtrackex.c:185)
+==826053== 
+==826053== 
+==826053== HEAP SUMMARY:
+==826053==     in use at exit: 0 bytes in 0 blocks
+==826053==   total heap usage: 11 allocs, 11 frees, 1,177 bytes allocated
+==826053== 
+==826053== All heap blocks were freed -- no leaks are possible
+==826053== 
+==826053== Use --track-origins=yes to see where uninitialised values come from
+==826053== For lists of detected and suppressed errors, rerun with: -s
+==826053== ERROR SUMMARY: 854955 errors from 29 contexts (suppressed: 0 from 0)
